@@ -1,18 +1,26 @@
 class Day25
-  
-  def self.part_1
-    File.readlines("day_25/day_25_input.txt", chomp: true).each do |line|
+
+  def part_1(test: false)
+    File.readlines("day_25/day_25_#{'test_' if test}input.txt", chomp: true).each do |line|
       puts(line)
     end
 
     # Your code goes here
   end
 
-  def self.part_2
-    File.readlines("day_25/day_25_input.txt", chomp: true).each do |line|
+  def part_2(test: false)
+    File.readlines("day_25/day_25_#{'test_' if test}input.txt", chomp: true).each do |line|
       puts(line)
     end
 
     # Your code goes here
   end
 end
+
+puts "PART 1"
+puts "\tTEST INPUT RESULT = #{Day25.new.part_1(test: true)}"
+puts "\tACTUAL INPUT RESULT = #{Day25.new.part_1}"
+
+puts "\nPART 2"
+puts "\tTEST INPUT RESULT = #{Day25.new.part_2(test: true)}"
+puts "\tACTUAL INPUT RESULT = #{Day25.new.part_2}"
