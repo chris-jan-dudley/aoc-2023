@@ -3,9 +3,9 @@ class Initializer
   def self.run
     (1..25).each do |day|
       Dir.mkdir("day_#{day}") unless Dir.exist?("day_#{day}")
-      File.open("day_#{day}/day_#{day}_input.txt", 'w') {|f| f.write("") } unless File.exist?("day_#{day}/input.txt")
-      File.open("day_#{day}/day_#{day}_test_input.txt", 'w') {|f| f.write("") } unless File.exist?("day_#{day}/input.txt")
-      File.open("day_#{day}/day_#{day}_solution.rb", 'w')  {|f| f.write(template(day: day)) } unless File.exist?("day_#{day}/solution.rb") 
+      File.open("day_#{day}/day_#{day}_input.txt", 'w') {|f| f.write("") } unless File.exist?("day_#{day}/day_#{day}_input.txt")
+      File.open("day_#{day}/day_#{day}_test_input.txt", 'w') {|f| f.write("") } unless File.exist?("day_#{day}/day_#{day}_test_input.txt")
+      File.open("day_#{day}/day_#{day}_solution.rb", 'w')  {|f| f.write(template(day: day)) } unless File.exist?("day_#{day}/day_#{day}_solution.rb") 
     end
   end
 
