@@ -11,11 +11,29 @@ class Day4
   end
 
   def part_2(test: false)
+    cards = {}
     File.readlines("day_4/day_4_#{'test_' if test}input.txt", chomp: true).each do |line|
-      puts(line)
+      winners = splitter(line, 1).map(&:to_i)
+      numbers = splitter(line, 2).map(&:to_i)
+
+      cards[splitter(line, 0).last.to_i] = 
+        { 
+          :count => 1,
+          :winning_numbers => (winners & numbers).length
+        }
     end
 
-    # Your code goes here
+    cards.each do |card, data|
+      data[:count].times { |_| (1..data[:winning_numbers]).each { |i| cards[card + i][:count] += 1 } }
+    end
+     
+    cards.map { |card, data| data[:count] }.sum
+  end
+
+  private
+
+  def splitter(line, index)
+    line.split(/[\:\|]/)[index].split(' ')
   end
 end
 
@@ -23,6 +41,6 @@ puts "PART 1"
 puts "\tTEST INPUT RESULT = #{Day4.new.part_1(test: true)}"
 puts "\tACTUAL INPUT RESULT = #{Day4.new.part_1}"
 
-# puts "\nPART 2"
-# puts "\tTEST INPUT RESULT = #{Day4.new.part_2(test: true)}"
-# puts "\tACTUAL INPUT RESULT = #{Day4.new.part_2}"
+puts "\nPART 2"
+puts "\tTEST INPUT RESULT = #{Day4.new.part_2(test: true)}"
+puts "\tACTUAL INPUT RESULT = #{Day4.new.part_2}"
