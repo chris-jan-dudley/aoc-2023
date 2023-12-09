@@ -1,5 +1,3 @@
-require 'byebug'
-
 class Day6
 
   def initialize(test: false)
